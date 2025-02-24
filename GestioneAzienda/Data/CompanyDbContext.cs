@@ -8,6 +8,7 @@ namespace GestioneAzienda.Data
     {
         public CompanyDbContext(DbContextOptions<CompanyDbContext> options) : base(options) { }
 
+        public DbSet<Contract> Contracts { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeDocument> EmployeeDocuments { get; set; }
