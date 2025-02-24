@@ -44,6 +44,8 @@ namespace GestioneAzienda.Data.Employees
 
         public DateOnly? CourseStart { get; set; }
 
+        public List<MedicalExamination> Examination { get; set; }
+
         public int CompanyId { get; set; }
     }
 }

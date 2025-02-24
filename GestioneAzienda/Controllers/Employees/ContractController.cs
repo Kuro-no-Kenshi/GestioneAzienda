@@ -80,32 +80,34 @@ namespace GestioneAzienda.Controllers.Employees
         {
             if (id != contract.ContractId)
             {
-                return BadRequest("Contract ID mismatch.");
+                return BadRequest();
             }
+
+            _context.Entry(contract).State = EntityState.Modified;
 
             try
             {
-                var existingContract = await _context.Contracts.FindAsync(id);
-
-                if (existingContract == null)
-                {
-                    return NotFound($"Contract with ID {id} not found.");
-                }
-
-                _context.Entry(existingContract).CurrentValues.SetValues(contract);
                 await _context.SaveChangesAsync();
-
-                return Ok("Contract updated successfully.");
             }
             catch (DbUpdateConcurrencyException)
             {
-                return StatusCode(500, "Concurrency error occurred while updating the contract.");
+                if (!ContractExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return StatusCode(500, "Concurrency error occurred while updating the contract.");
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
+
+            return Ok("Contract updated successfully.");
         }
+
 
         // DELETE: api/Contract/{id}
         [HttpDelete("{id}")]
