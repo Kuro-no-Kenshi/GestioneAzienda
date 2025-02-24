@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using GestioneAzienda.Data;
 using GestioneAzienda.Data.Employees;
-using System.Diagnostics.Contracts;
 
 namespace GestioneAzienda.Controllers.Employees
 {
