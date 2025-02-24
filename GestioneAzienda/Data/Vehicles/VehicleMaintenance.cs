@@ -17,7 +17,7 @@ namespace GestioneAzienda.Data.Vehicles
         public int UsageHours { get; set; }
 
         [Required(ErrorMessage = "Description is required.")]
-        [StringLength(500, MinimumLength = 10, ErrorMessage = "Description must be between 20 and 200 characters.")]
+        [StringLength(500, MinimumLength = 10, ErrorMessage = "Description must be between 20 and 500 characters.")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Invoice number is required.")]

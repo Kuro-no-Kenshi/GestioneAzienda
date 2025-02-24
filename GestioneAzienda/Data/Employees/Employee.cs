@@ -36,11 +36,11 @@ namespace GestioneAzienda.Data.Employees
 
         public int ProfessionId { get; set; }
 
-        public int CourseId { get; set; }
+        public int? CourseId { get; set; }
 
         public int ProfessionalLevelId { get; set; }
 
-        public DateOnly CourseStart { get; set; }
+        public DateOnly? CourseStart { get; set; }
 
         public int CompanyId { get; set; }
     }
