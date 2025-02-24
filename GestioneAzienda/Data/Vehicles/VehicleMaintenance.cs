@@ -7,7 +7,7 @@ namespace GestioneAzienda.Data.Vehicles
     {
         public int VehicleMaintenanceId { get; set; }
 
-        public int VehiclesId { get; set; }
+        public int VehicleId { get; set; }
 
         [Required(ErrorMessage = "Maintenance date is required.")]
         public DateOnly MaintenanceDate { get; set; }

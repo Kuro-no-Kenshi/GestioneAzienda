@@ -28,8 +28,10 @@ namespace GestioneAzienda.Data.Employees
         [Required(ErrorMessage = "HiringDate is required.")]
         public DateOnly HiringDate { get; set; }
 
-        [Required(ErrorMessage = "IsPermanentContract is required.")]
-        public bool IsPermanentContract { get; set; }
+        [Required(ErrorMessage = "Contract type is required.")]
+        public int ContractId { get; set; }
+
+        public DateOnly? ContractEnd { get; set; }
 
         [Required(ErrorMessage = "SerialNumber is required.")]
         public string SerialNumber { get; set; }
