@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using GestioneAzienda.Data;
 using GestioneAzienda.Data.Employees;
+using System.Diagnostics.Contracts;
 
 namespace GestioneAzienda.Controllers.Employees
 {
@@ -20,31 +21,59 @@ namespace GestioneAzienda.Controllers.Employees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MedicalExamination>>> GetMedicalExaminations()
         {
-            return await _context.MedicalExaminations.ToListAsync();
+            try
+            {
+                return await _context.MedicalExaminations.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
         }
 
         // GET: api/MedicalExamination/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<MedicalExamination>> GetMedicalExamination(int id)
         {
-            var medicalExamination = await _context.MedicalExaminations.FindAsync(id);
-
-            if (medicalExamination == null)
+            try
             {
-                return NotFound();
-            }
+                var medicalExamination = await _context.MedicalExaminations.FindAsync(id);
 
-            return medicalExamination;
+                if (medicalExamination == null)
+                {
+                    return NotFound();
+                }
+
+                return medicalExamination;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }   
         }
 
         // POST: api/MedicalExamination
         [HttpPost]
         public async Task<ActionResult<MedicalExamination>> CreateMedicalExamination(MedicalExamination medicalExamination)
         {
-            _context.MedicalExaminations.Add(medicalExamination);
-            await _context.SaveChangesAsync();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                
+                _context.MedicalExaminations.Add(medicalExamination);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetMedicalExamination), new { id = medicalExamination.MedicalExaminationId }, medicalExamination);
+                return CreatedAtAction(nameof(GetMedicalExamination), new { id = medicalExamination.MedicalExaminationId }, medicalExamination);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
+            
         }
 
         // PUT: api/MedicalExamination/{id}
@@ -87,16 +116,23 @@ namespace GestioneAzienda.Controllers.Employees
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMedicalExamination(int id)
         {
-            var medicalExamination = await _context.MedicalExaminations.FindAsync(id);
-            if (medicalExamination == null)
+            try
             {
-                return NotFound();
+                var medicalExamination = await _context.MedicalExaminations.FindAsync(id);
+                if (medicalExamination == null)
+                {
+                    return NotFound();
+                }
+
+                _context.MedicalExaminations.Remove(medicalExamination);
+                await _context.SaveChangesAsync();
+
+                return Ok("Medical examination deleted successfully.");
             }
-
-            _context.MedicalExaminations.Remove(medicalExamination);
-            await _context.SaveChangesAsync();
-
-            return Ok("Medical examination deleted successfully.");
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
         }
 
         private bool MedicalExaminationExists(int id)
