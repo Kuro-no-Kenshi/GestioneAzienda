@@ -9,8 +9,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -21,6 +19,8 @@ builder.Services.AddCors(options =>
                   .AllowAnyHeader();
         });
 });
+
+var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
