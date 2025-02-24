@@ -100,7 +100,7 @@ namespace GestioneAzienda.Controllers.Vehicles
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
 
-            return NoContent();
+            return Ok("Vehicle type updated successfully.");
         }
 
         // DELETE: api/VehicleType/{id}
@@ -118,7 +118,7 @@ namespace GestioneAzienda.Controllers.Vehicles
                 _context.VehicleTypes.Remove(vehicleType);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Vehicle type deleted successfully.");
             }
             catch (Exception ex)
             {

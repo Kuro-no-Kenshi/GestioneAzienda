@@ -99,7 +99,7 @@ namespace GestioneAzienda.Controllers.Vehicles
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
 
-            return NoContent();
+            return Ok("Supplier updated successfully.");
         }
 
         // DELETE: api/Supplier/{id}
@@ -117,7 +117,7 @@ namespace GestioneAzienda.Controllers.Vehicles
                 _context.Suppliers.Remove(supplier);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Supplier deleted successfully.");
             }
             catch (Exception ex)
             {

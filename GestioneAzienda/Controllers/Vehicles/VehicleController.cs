@@ -110,7 +110,7 @@ namespace GestioneAzienda.Controllers.Vehicles
 
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Vehicle updated successfully.");
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -141,7 +141,7 @@ namespace GestioneAzienda.Controllers.Vehicles
                 _context.Vehicles.Remove(vehicle);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Vehicle deleted successfully.");
             }
             catch (Exception ex)
             {

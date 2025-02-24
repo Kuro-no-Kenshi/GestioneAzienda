@@ -99,7 +99,7 @@ namespace GestioneAzienda.Controllers.Employees
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
 
-            return NoContent();
+            return Ok("Employee document updated successfully.");
         }
 
         // DELETE: api/EmployeeDocument/{id}
@@ -117,7 +117,7 @@ namespace GestioneAzienda.Controllers.Employees
                 _context.EmployeeDocuments.Remove(document);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Employee document deleted successfully.");
             }
             catch (Exception ex)
             {

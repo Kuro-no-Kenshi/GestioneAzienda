@@ -99,7 +99,7 @@ namespace GestioneAzienda.Controllers.Employees
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
 
-            return NoContent();
+            return Ok("Profession updated successfully.");
         }
 
         // DELETE: api/Profession/{id}
@@ -117,7 +117,7 @@ namespace GestioneAzienda.Controllers.Employees
                 _context.Professions.Remove(profession);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Profession deleted successfully.");
             }
             catch (Exception ex)
             {

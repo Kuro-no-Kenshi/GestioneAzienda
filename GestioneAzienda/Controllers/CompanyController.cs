@@ -99,7 +99,7 @@ namespace GestioneAzienda.Controllers
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
 
-            return NoContent();
+            return Ok("Company updated successfully.");
         }
 
         // DELETE: api/Company/{id}
@@ -117,7 +117,7 @@ namespace GestioneAzienda.Controllers
                 _context.Companies.Remove(company);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Company deleted successfully.");
             }
             catch (Exception ex)
             {

@@ -99,7 +99,7 @@ namespace GestioneAzienda.Controllers.Employees
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
 
-            return NoContent();
+            return Ok("Professional level updated successfully.");
         }
 
         // DELETE: api/ProfessionalLevel/{id}
@@ -117,7 +117,7 @@ namespace GestioneAzienda.Controllers.Employees
                 _context.ProfessionalLevels.Remove(professionalLevel);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Professional level deleted successfully.");
             }
             catch (Exception ex)
             {

@@ -95,7 +95,7 @@ namespace GestioneAzienda.Controllers.Vehicles
                 _context.Entry(existingMaintenance).CurrentValues.SetValues(maintenance);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Vehicle Maintenance updated successfully.");
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -123,7 +123,7 @@ namespace GestioneAzienda.Controllers.Vehicles
                 _context.VehicleMaintenances.Remove(maintenance);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Vehicle Maintenance deleted successfully.");
             }
             catch (Exception ex)
             {

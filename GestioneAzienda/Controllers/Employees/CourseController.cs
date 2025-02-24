@@ -82,7 +82,7 @@ namespace GestioneAzienda.Controllers.Employees
             try
             {
                 await _context.SaveChangesAsync();
-                return NoContent();
+                return Ok("Course updated successfully.");
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -113,7 +113,7 @@ namespace GestioneAzienda.Controllers.Employees
                 _context.Courses.Remove(course);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok("Course deleted successfully.");
             }
             catch (Exception ex)
             {
