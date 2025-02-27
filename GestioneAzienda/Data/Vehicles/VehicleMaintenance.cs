@@ -33,7 +33,6 @@ namespace GestioneAzienda.Data.Vehicles
         [Range(0.01, double.MaxValue, ErrorMessage = "Maintenance cost must be greater than 0.")]
         public decimal MaintenanceCost { get; set; }
 
-        [Required(ErrorMessage = "Invoice file name is required.")]
-        public string InvoiceFileName { get; set; }
+        public string? InvoiceFileName { get; set; }
     }
 }

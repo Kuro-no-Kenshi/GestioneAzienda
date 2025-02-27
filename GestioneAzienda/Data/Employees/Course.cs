@@ -11,6 +11,7 @@ namespace GestioneAzienda.Data.Employees
 
         [Required(ErrorMessage = "Course duration is required")]
         public int CourseDuration { get; set; }  // duration in months
+        // tempo validità attestato
 
         [Required(ErrorMessage = "Course type is required")]
         public CourseType CourseType { get; set; }

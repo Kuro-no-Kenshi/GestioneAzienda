@@ -38,11 +38,9 @@ namespace GestioneAzienda.Data.Employees
 
         public int ProfessionId { get; set; }
 
-        public int? CourseId { get; set; }
-
         public int ProfessionalLevelId { get; set; }
 
-        public DateOnly? CourseStart { get; set; }
+        public List<EmployeeCourseDetail>? EmployeeCourseDetail { get; set; }
 
         public List<MedicalExamination>? Examination { get; set; }
 

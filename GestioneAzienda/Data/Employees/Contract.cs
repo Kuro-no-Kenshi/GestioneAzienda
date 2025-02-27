@@ -8,5 +8,7 @@ namespace GestioneAzienda.Data.Employees
 
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Name must contain only letters.")]
         public string Name { get; set; }
+
+        public bool HasEnd { get; set; }
     }
 }

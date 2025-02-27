@@ -11,6 +11,7 @@ namespace GestioneAzienda.Data
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeCourseDetail> EmployeeCourseDetails { get; set; }
         public DbSet<EmployeeDocument> EmployeeDocuments { get; set; }
         public DbSet<MedicalExamination> MedicalExaminations { get; set; }
         public DbSet<Profession> Professions { get; set; }
