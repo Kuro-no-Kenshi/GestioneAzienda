@@ -22,7 +22,10 @@ namespace GestioneAzienda.Controllers.Employees
         {
             try
             {
-                return await _context.Employees.ToListAsync();
+                return await _context.Employees
+                    .Include(e => e.EmployeeCourseDetail)
+                    .Include(e => e.Examination)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
